@@ -1,3 +1,0 @@
-- shell:
-  - [ snap install discord, Installing Discord... ]
-  - [ apt install -y gnome-shell-extension-autohidetopbar, Installing Gnome Hide Topbar ]

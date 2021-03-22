@@ -1,2 +1,0 @@
-- shell:
-    - [ ./alacritty/build.sh, Building Alacritty...]

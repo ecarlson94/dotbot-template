@@ -1,2 +1,0 @@
-- shell:
-    - [ pip3 install --user --upgrade pynvim, Install neovim plugin manager ]

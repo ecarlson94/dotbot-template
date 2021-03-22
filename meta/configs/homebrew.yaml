@@ -1,8 +1,0 @@
-- shell:
-    -
-      command: "yes | /bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\""
-      description: Installing Homebrew
-      stdin: true
-      stdout: true
-    - [ brew bundle --file Brewfile.mac, Install dependencies]
-
