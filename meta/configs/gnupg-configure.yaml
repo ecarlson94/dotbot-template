@@ -1,2 +1,0 @@
-- shell:
-    - [ gpg --import gnupg/gpg-primary-public-key.txt && gpg-connect-agent updatestartuptty /bye, Configuring GNUPG... ]
