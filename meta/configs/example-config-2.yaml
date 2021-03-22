@@ -1,0 +1,2 @@
+- shell:
+  - [ apt update && apt install -y zsh, Install ZSH... ]
