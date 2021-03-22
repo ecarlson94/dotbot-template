@@ -1,0 +1,2 @@
+- shell:
+    - [ cd meta/dotfiles && ./install-standalone alacritty dir-colors gnupg, Configurilinu host dotfiles for linux... ]

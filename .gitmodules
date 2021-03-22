@@ -1,0 +1,8 @@
+[submodule "meta/alacritty"]
+	path = meta/alacritty
+	url = https://github.com/alacritty/alacritty.git
+	ignore = dirty
+[submodule "meta/dotfiles"]
+	path = meta/dotfiles
+	url = https://github.com/ecarlson94/dotfiles
+	ignore = dirty

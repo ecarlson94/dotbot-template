@@ -1,0 +1,7 @@
+- shell:
+    - if [ ! -d $HOME/.fonts ]; then mkdir $HOME/.fonts; fi
+    - cp fonts/MesloLGS\ NF\ Bold.ttf $HOME/.fonts/
+    - cp fonts/MesloLGS\ NF\ Italic.ttf $HOME/.fonts/
+    - cp fonts/MesloLGS\ NF\ Regular.ttf $HOME/.fonts/
+    - cp fonts/MesloLGS\ NF\ Bold\ Italic.ttf $HOME/.fonts/
+    - [ fc-cache -f -v, Installing fonts... ]

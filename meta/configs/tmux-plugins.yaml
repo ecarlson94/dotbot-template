@@ -1,0 +1,5 @@
+- shell:
+    - [ tmux start-server, Installing tmux plugins... ]
+    - tmux new-session -d
+    - $HOME/.tmux/plugins/tpm/scripts/install_plugins.sh
+    - tmux kill-server

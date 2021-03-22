@@ -1,0 +1,8 @@
+- shell:
+    - apt update
+    - apt upgrade -y
+    - apt-get update
+    - apt-get upgrade -y
+    - [ apt install -y scdaemon pcscd ubuntu-dev-tools gnupg, Installing GNUPG... ]
+    - [ apt install -y fontconfig, Installing font dependencies... ]
+    - [ snap install docker && groupadd -f docker && usermod -aG docker $USER, Installing docker... ]

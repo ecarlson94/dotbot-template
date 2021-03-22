@@ -1,0 +1,2 @@
+- shell:
+    - [ zsh ./zsh/install-plugins.zsh, Isntalling Zsh plugins...]

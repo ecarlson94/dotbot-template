@@ -1,0 +1,5 @@
+- shell:
+    - cp fonts/MesloLGS\ NF\ Bold.ttf $HOME/Library/Fonts/
+    - cp fonts/MesloLGS\ NF\ Italic.ttf $HOME/Library/Fonts/
+    - cp fonts/MesloLGS\ NF\ Regular.ttf $HOME/Library/Fonts/
+    - cp fonts/MesloLGS\ NF\ Bold\ Italic.ttf $HOME/Library/Fonts/
