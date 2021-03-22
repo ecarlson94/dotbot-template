@@ -1,5 +1,7 @@
 # Dotbot Template
-Template repository for advanced Dotbot configuration
+Template repository for advanced [Dotbot](https://github.com/anishathalye/dotbot) configuration.
+
+For getting started, please review the [Wiki](https://github.com/ecarlson94/dotbot-template/wiki)!
 
 The structure of this repository is heavily inspired by [vsund](https://github.com/vsund/dotfiles) and [vbrandl](https://github.com/vbrandl/dotfiles).
 
