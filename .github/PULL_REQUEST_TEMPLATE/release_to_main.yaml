@@ -1,0 +1,10 @@
+name: Release To Main
+title: "[+semver: minor]: "
+labels: [release]
+assignees:
+  - dev
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For releaseing to production
