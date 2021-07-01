@@ -19,6 +19,7 @@ jobs:
           pr_body: ":crown: *An automated PR*"              # Full markdown support, requires pr_title to be set
           pr_reviewer: "walawrenci"                         # Comma-separated list (no spaces)
           pr_label: "release"                               # Comma-separated list (no spaces)
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
   create-develop-pr:
     name: Create Release PR Against develop
@@ -35,3 +36,4 @@ jobs:
           pr_body: ":crown: *An automated PR*"              # Full markdown support, requires pr_title to be set
           pr_reviewer: "walawrenci"                         # Comma-separated list (no spaces)
           pr_label: "release"                               # Comma-separated list (no spaces)
+          github_token: ${{ secrets.GITHUB_TOKEN }}
