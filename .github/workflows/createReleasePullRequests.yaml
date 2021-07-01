@@ -11,11 +11,17 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Get Branch Info
+        id: branch-info
+        run: echo "::set-output name=name::${REF_TRIGGER##*/}"
+        env:
+          REF_TRIGGER: ${{ github.ref }}
+
       - name: Create Pull Request
         uses: repo-sync/pull-request@v2
         with:
           destination_branch: "main"                      # If blank, default: master
-          pr_title: "Pulling ${{ github.ref }} into main +semver: minor" # Title of pull request
+          pr_title: "Pulling ${{ steps.branch-info.outputs.name }} into main +semver: minor" # Title of pull request
           pr_body: ":crown: *An automated PR*"              # Full markdown support, requires pr_title to be set
           pr_reviewer: "walawrenci"                         # Comma-separated list (no spaces)
           pr_label: "release"                               # Comma-separated list (no spaces)
@@ -27,12 +33,17 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Get Branch Info
+        id: branch-info
+        run: echo "::set-output name=name::${REF_TRIGGER##*/}"
+        env:
+          REF_TRIGGER: ${{ github.ref }}
 
       - name: Create Pull Request
         uses: repo-sync/pull-request@v2
         with:
           destination_branch: "develop"                      # If blank, default: master
-          pr_title: "Pulling ${{ github.ref }} into develop" # Title of pull request
+          pr_title: "Pulling ${{ steps.branch-info.outputs.name }} into develop" # Title of pull request
           pr_body: ":crown: *An automated PR*"              # Full markdown support, requires pr_title to be set
           pr_reviewer: "walawrenci"                         # Comma-separated list (no spaces)
           pr_label: "release"                               # Comma-separated list (no spaces)
