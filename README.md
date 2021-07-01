@@ -1,4 +1,4 @@
-# Dotbot Template
+# Dotbot Template I DO WHAT I WANT
 Template repository for advanced [Dotbot](https://github.com/anishathalye/dotbot) configuration.
 
 For getting started, please review the [Wiki](https://github.com/ecarlson94/dotbot-template/wiki)!
