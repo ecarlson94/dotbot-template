@@ -18,7 +18,7 @@ jobs:
       - name: Get Ref Info
         id: refinfo
         run: |
-          echo "::set-output name=name::${ref##*/}"
+          echo "::set-output name=name::${REF_TRIGGER##*/}"
         env:
           REF_TRIGGER: ${{ github.ref }}
 
