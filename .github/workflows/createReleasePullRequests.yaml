@@ -2,13 +2,30 @@ name: Create Release Pull Requests
 on:
   push:
     branches:
-      - '**'
+      - 'release*'
 
 jobs:
+  branch-info:
+    name: Set Version Info
+    runs-on: ubuntu-latest
+    outputs:
+      name: ${{ steps.refinfo.outputs.name }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.ref }}
+
+      - name: Get Ref Info
+        id: refinfo
+        run: |
+          echo "::set-output name=name::${ref##*/}"
+        env:
+          REF_TRIGGER: ${{ github.ref }}
+
   create-main-pr:
     name: Create Release PR Against main
+    needs: [branch-info]
     runs-on: ubuntu-latest
-    if: startsWith(github.ref, 'refs/heads/release')
     steps:
       - uses: actions/checkout@v2
         with:
@@ -20,12 +37,12 @@ jobs:
           title: "RELEASE -> 'main' +semver: minor"
           labels: 'release'
           base: main
-          branch: ${{ github.ref }}
+          branch: ${{ needs.branch-info.outputs.name }}
 
   create-develop-pr:
     name: Create Release PR Against develop
+    needs: [branch-info]
     runs-on: ubuntu-latest
-    if: startsWith(github.ref, 'refs/heads/release')
     steps:
       - uses: actions/checkout@v2
         with:
@@ -37,4 +54,4 @@ jobs:
           title: "RELEASE -> 'develop'"
           labels: 'release'
           base: develop
-          branch: ${{ github.ref }}
+          branch: ${{ needs.branch-info.outputs.name }}
