@@ -1,5 +1,48 @@
 #!/usr/bin/env bash
 
+# install-profile
+# used for running group of installation scripts as a profile located in ./meta/profiles/ folder
+# Ex: install script for MacOS, debian
+# Usage: ./install-profile <profile ...>
+# ./install-profile mac
+# ./install-profile debian-terminal
+# ./install-profile debian-terminal debian-gui
+# 
+# ------------------------------------------------------------------------------------------------ #
+#
+# files in ./meta/profiles/ folder are plain text files that have config filename(no file extenstion).
+# check example: https://github.com/ecarlson94/dotbot-template/blob/main/meta/profiles/exampleOS1
+# Ex:
+# ./meta/profiles/macos contains
+# nvim
+# tmux
+# homebrew
+# 
+# ------------------------------------------------------------------------------------------------ #
+#
+# NOTE: to run a config in sudo, then add '-sudo' as a suffix of the config to run.
+# Ex: ./meta/profiles/debian contains
+# apt-sudo
+# 
+# ------------------------------------------------------------------------------------------------ #
+# 
+# to ignore a line in a profile, add '#' at the beginning of that line
+# Ex: ./meta/profiles/macos contains
+# nvim
+# tmux
+# homebrew
+# # astronvim
+# 
+# This will ignore 'astronvim' config
+# 
+# ------------------------------------------------------------------------------------------------ #
+#
+# check example: https://github.com/ecarlson94/dotbot-template/blob/main/meta/profiles/exampleOS1
+# check: https://github.com/ecarlson94/dotbot-template#for-installing-single-configurations
+#
+# obtained from https://github.com/anishathalye/dotbot/wiki/Tips-and-Tricks#install-profile
+# author ecarlson94
+
 set -e
 
 BASE_CONFIG="base"
