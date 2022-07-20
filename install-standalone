@@ -18,6 +18,13 @@ BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "${BASE_DIR}"
 git submodule update --init --recursive
 
+# load env variables.
+# load XDG dotfile locations. https://wiki.archlinux.org/title/XDG_Base_Directory
+# 
+# Why?
+#   You can load ENV variables and use them in dotbot configs. 
+#   Ex: setting ENV ALACRITTY_CONFIG_PATH and using it in a dotbot config file
+# source tools/zsh/zshenv       # file to load ENV variables
 
 # ------------------------------------------------------------------------------------------------ #
 # Verify dotbot config files exist.
@@ -71,6 +78,19 @@ for config in ${@}; do
     echo -e "\nConfigure $config\n"
 
     if [[ $config == *"sudo"* ]]; then
+        # - pass tools/zsh/zshenv file when running in sudo to load ENV
+        #   - Why?
+        #     - some of the dotbot configs are using using sudo and XDG envs defined in ./tools/zsh/zshenv
+        # - set HOME to current home user path
+        #   - Why?
+        #     - when running in sudo, the XDG env tools/zsh/zshenv are not not loaded
+        # 
+        # - passing ENV in sudo https://unix.stackexchange.com/a/396528
+        # - setting BASH_ENV https://unix.stackexchange.com/a/429235
+        # - setting env HOME : assuming dotfiles repo is in the Home folder
+        #   - requires full directory path
+        # cmd=(sudo env HOME="$(echo $HOME)" BASH_ENV="./tools/zsh/zshenv" "${cmd[@]}")
+
         cmd=(sudo "${cmd[@]}")
     fi
 
