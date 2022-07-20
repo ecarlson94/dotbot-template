@@ -19,6 +19,22 @@ cd "${BASE_DIR}"
 git submodule update --init --recursive
 
 # ------------------------------------------------------------------------------------------------ #
+# Utility functions
+
+# print line banner
+# used for segmenting when a profile configs is being executed.
+# For VISUAL purposes
+printLineBanner() {
+  # print a line depending on the terminal width
+  # https://unix.stackexchange.com/a/425158
+  # https://stackoverflow.com/a/17030976/3053548
+  #
+  # print ANSI color using printf
+  # https://stackoverflow.com/a/26873040/3053548
+  printf '\e[1;34m%0.s#\e[0m' $(seq 1 $(stty size | awk '{print $2}'))
+}
+
+# ------------------------------------------------------------------------------------------------ #
 # Verify dotbot profile exists
 # Checks if the file exists in meta/profiles/ folder
 
@@ -57,6 +73,11 @@ for profile in ${@}; do
     while IFS= read -r config; do
         CONFIGS+=" ${config}"
     done < "${META_DIR}/${PROFILES_DIR}/$profile"
+
+    # print line banner multiple times
+    # https://serverfault.com/a/273241
+    for i in `seq 2`; do printLineBanner; done
+    echo -e "\nRunning profile \e[1;34m$profile\e[0m\n"
 
     # run profile configs
     source ./install-standalone ${CONFIGS}
