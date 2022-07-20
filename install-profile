@@ -25,23 +25,8 @@ done < "${META_DIR}/${PROFILES_DIR}/$1"
 
 shift
 
-
-for config in ${CONFIGS} ${@}; do
-    echo -e "\nConfigure $config"
-    # create temporary file
-    configFile="$(mktemp)"
-    suffix="-sudo"
-    echo -e "$(<"${BASE_DIR}/${META_DIR}/${BASE_CONFIG}${CONFIG_SUFFIX}")\n$(<"${BASE_DIR}/${META_DIR}/${CONFIG_DIR}/${config%"$suffix"}${CONFIG_SUFFIX}")" > "$configFile"
-
-    cmd=("${BASE_DIR}/${META_DIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASE_DIR}" -c "$configFile")
-
-    if [[ $config == *"sudo"* ]]; then
-        cmd=(sudo "${cmd[@]}")
-    fi
-
-    "${cmd[@]}"
-    rm -f "$configFile"
-done
+# run profile configs
+source ./install-standalone ${CONFIGS}
 
 cd "${BASE_DIR}"
 
