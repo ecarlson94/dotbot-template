@@ -18,6 +18,35 @@ BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "${BASE_DIR}"
 git submodule update --init --recursive
 
+# ------------------------------------------------------------------------------------------------ #
+# Verify dotbot profile exists
+# Checks if the file exists in meta/profiles/ folder
+
+exitIfProfileNotFound=false    # used as a flag to exit IF a profile is NOT found
+for profile in ${@}; do
+  # check if the profile filepath doesn't exist
+  #   print message
+  #   flag variable to exit
+
+  profileFilepath="${BASE_DIR}/${META_DIR}/${PROFILES_DIR}/${profile}"
+
+  if [[ ! -e $profileFilepath ]]; then
+    echo -e "Dotbot profile \\033[1;31m$profileFilepath \\033[0mNOT found"
+
+    exitIfProfileNotFound=true
+  fi
+done
+
+# exit if a profile filepath is NOT found
+if [[ $exitIfProfileNotFound == true ]]; then
+  echo -e "\nexiting"
+  exit 1
+fi
+
+# cleanup variables
+unset exitIfProfileNotFound
+
+# ------------------------------------------------------------------------------------------------ #
 
 while IFS= read -r config; do
     CONFIGS+=" ${config}"
