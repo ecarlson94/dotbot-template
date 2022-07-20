@@ -1,0 +1,6 @@
+# showcasing using ENV
+# 
+# usage:
+# ./install-standalone example-config-3
+- link:
+    $ASTRO_NVIM_CONFIG_DIR_PATH: tools/astronvim
