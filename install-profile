@@ -47,15 +47,23 @@ fi
 unset exitIfProfileNotFound
 
 # ------------------------------------------------------------------------------------------------ #
+# Running profile
 
-while IFS= read -r config; do
-    CONFIGS+=" ${config}"
-done < "${META_DIR}/${PROFILES_DIR}/$1"
+# loop through each argument
+#   extract dotbot configs to run
+#   run dotbot configs using ./install-standalone
+for profile in ${@}; do
+    # extract dotbot configs to run
+    while IFS= read -r config; do
+        CONFIGS+=" ${config}"
+    done < "${META_DIR}/${PROFILES_DIR}/$profile"
 
-shift
+    # run profile configs
+    source ./install-standalone ${CONFIGS}
 
-# run profile configs
-source ./install-standalone ${CONFIGS}
+    # cleanup variables
+    unset CONFIGS
+done
 
 cd "${BASE_DIR}"
 
