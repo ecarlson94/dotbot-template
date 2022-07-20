@@ -63,6 +63,13 @@ for config in ${@}; do
 
     cmd=("${BASE_DIR}/${META_DIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASE_DIR}" -c "$configFile")
 
+    # print a line depending on the terminal width
+    # get terminal width: https://unix.stackexchange.com/a/425158
+    # print a line of   : https://stackoverflow.com/a/17030976/3053548
+    printf '%0.s=' $(seq 1 $(stty size | awk '{print $2}'))
+    printf '%0.s=' $(seq 1 $(stty size | awk '{print $2}'))
+    echo -e "\nConfigure $config\n"
+
     if [[ $config == *"sudo"* ]]; then
         cmd=(sudo "${cmd[@]}")
     fi
