@@ -1,0 +1,17 @@
+#!/bin/bash
+# 
+# NOTE: this not to be run by bash.
+#       this is ONLY used for reading the file contents.
+#       the shebang is used by VScode for syntax highlighting
+#       file is read using 'install-profile'
+# a list of dotbot config to run
+# 
+# to omit a config from being run, add # at the beginning of the line
+
+example-config-1
+example-config-2
+# example-config-2    # this will be ignored
+example-config-1
+example-config-2
+# example-config-1    # this will be ignored
+# example-config-2    # this will be ignored
