@@ -18,6 +18,43 @@ BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "${BASE_DIR}"
 git submodule update --init --recursive
 
+
+# ------------------------------------------------------------------------------------------------ #
+# Verify dotbot config files exist.
+# Also checks if the config file exists if it has a suffix of '-sudo'. Ex: apt-sudo
+# Checks if the file exists in meta/configs/ folder
+# Exits program if a dotbot config doesn't exist
+
+sudoSuffix="-sudo"
+exitIfConfigNotFound=false    # used as a flag to exit IF a config file is NOT found
+for config in ${@}; do
+    # remove suffix '-sudo' in the variable $config
+    # check if the config filepath doesn't exist
+    #   print message
+    #   flag variable to exit
+
+    # remove suffix '-sudo'
+    # obtained from https://stackoverflow.com/a/16623897/3053548
+    config=${config%"$sudoSuffix"}
+    configFilepath="${BASE_DIR}/${META_DIR}/${CONFIG_DIR}/${config}${CONFIG_SUFFIX}"
+    if [[ ! -e $configFilepath ]]; then
+      echo -e "Dotbot config \\033[1;31m$configFilepath \\033[0mDOESN'T exists"
+
+      exitIfConfigNotFound=true
+    fi
+done
+
+# exit if a config filepath is NOT found
+if [[ $exitIfConfigNotFound == true ]]; then
+    echo -e "\nexiting"
+    exit 1
+fi
+
+# cleanup variables
+unset sudoSuffix
+unset exitIfConfigNotFound
+
+# ------------------------------------------------------------------------------------------------ #
 for config in ${@}; do
     # create temporary file
     configFile="$(mktemp)"
