@@ -109,7 +109,7 @@ Ex:
 #### Running with sudo
 
 _*Note:*_ Any configuration can be run as sudo by adding `-sudo` to the end of it when invoking the install script.
-*DO NOT* run the script as a sudoer.
+_DO NOT_ run the script as a sudoer.
 
 Ex:
 
@@ -145,18 +145,21 @@ If a filepath of an ENV is changed, then there's no need to update the dotbot co
 
 - First you need a file that loads ENV, Ex: `bash_profile`, `zshenv`
 - Set your ENVs in there
+
   - Ex:
-    ```bash 
-      export XDG_DATA_HOME="$HOME/.local/share"    
-      export XDG_STATE_HOME="$HOME/.local/state"   
-      export XDG_CONFIG_HOME="$HOME/.config"       
-      export XDG_CACHE_HOME="$HOME/.cache"         
+
+    ```bash
+      export XDG_DATA_HOME="$HOME/.local/share"
+      export XDG_STATE_HOME="$HOME/.local/state"
+      export XDG_CONFIG_HOME="$HOME/.config"
+      export XDG_CACHE_HOME="$HOME/.cache"
       export ALACRITTY_CONFIG_PATH="$XDG_CONFIG_HOME/alacritty/alacritty.yml"
     ```
+
 - enable usage of ENV (assuming ENV file is placed in `./tools/zsh/zshenv`)
-  - https://github.com/Clumsy-Coder/dotbot-template/blob/cd62645eec806e2ea59d91b91f00301f137ab0c7/install-standalone#L47
-  - https://github.com/Clumsy-Coder/dotbot-template/blob/cd62645eec806e2ea59d91b91f00301f137ab0c7/install-standalone#L120
-    - disable https://github.com/Clumsy-Coder/dotbot-template/blob/cd62645eec806e2ea59d91b91f00301f137ab0c7/install-standalone#L122
+  - https://github.com/ecarlson94/dotbot-template/blob/aaddada1c9589f74d43c247b6d174abdb324b448/install-standalone#L47
+  - https://github.com/ecarlson94/dotbot-template/blob/aaddada1c9589f74d43c247b6d174abdb324b448/install-standalone#L120
+    - disable https://github.com/ecarlson94/dotbot-template/blob/aaddada1c9589f74d43c247b6d174abdb324b448/install-standalone#L122
 
 ---
 
@@ -174,6 +177,7 @@ meta/profiles
 ---
 
 ### Configs
+
 <pre>
 meta
 ├── <a href="./meta/base.yaml" title="base.yaml">base.yaml</a>
@@ -186,5 +190,6 @@ meta
 ---
 
 ## License
+
 This software is hereby released under an MIT License. That means you can do whatever you want with conditions only requiring preservation of copyright and license notices.
 See [LICENSE](./LICENSE) for details.
